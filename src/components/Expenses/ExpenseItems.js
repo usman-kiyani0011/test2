@@ -4,7 +4,6 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItems = (props) => {
-
     const [title, setTitle] =  useState(props.title);
 
     const clickhandler = () => {
