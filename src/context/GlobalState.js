@@ -1,11 +1,12 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 // Initial State
+
 const initialState = {
   items: [],
+  totalItems: 0,
 };
-
 // Create Context
 export const GlobalContext = createContext(initialState);
 
@@ -32,6 +33,7 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         items: state.items,
+        totalItems: state.totalItems,
         removeItem,
         addItem,
       }}

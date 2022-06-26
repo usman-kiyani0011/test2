@@ -1,26 +1,28 @@
 import React, { useState, useContext, useEffect } from "react";
-import { GlobalContext } from "../context/GlobalState";
+
 import { Form, Button, Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../store/productSlice";
 
 export const AddItems = () => {
-  const { items, addItem, removeItem } = useContext(GlobalContext);
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.products);
 
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState();
+  console.log("totalItems");
 
   const onSubmit = (e) => {
     console.log("clicked");
     e.preventDefault();
     const newItem = {
-      id: items.length + 1,
       name,
       quantity,
       price,
     };
-    addItem(newItem);
+    dispatch(addProduct(name, quantity, price));
   };
-  console.log(items);
 
   return (
     <div className="w-full max-w-sm container mt-20 mx-auto">

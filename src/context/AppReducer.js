@@ -4,6 +4,7 @@ export default (state, action) => {
       return {
         ...state,
         items: [...state.items, action.payload],
+        totalItems: state.items.length,
       };
     case "REMOVE_ITEM":
       return {

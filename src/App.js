@@ -7,9 +7,10 @@ import { useContext, useEffect, useState } from "react";
 import { Button, Badge } from "react-bootstrap";
 
 const App = () => {
-  const { items } = useContext(GlobalContext);
+  const { items, totalItems } = useContext(GlobalContext);
 
   useEffect(() => {}, []);
+
   const [state, setState] = useState({
     home: true,
     checkOut: false,
@@ -35,7 +36,7 @@ const App = () => {
           </button>
 
           <button className="btn btn-warning m-3" onClick={checkOutHandler}>
-            Cart <Badge>{items.length}</Badge>
+            Cart <Badge>{totalItems}</Badge>
           </button>
           {/* {state.about && } */}
           {state.home && <AddItems />}
